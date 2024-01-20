@@ -6,6 +6,7 @@ import entities.Worker;
 import entities.Departament;
 import entities.HourContract;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class App {
@@ -45,6 +46,16 @@ public class App {
 
             w.addContract(new HourContract(date, valuePerHour, durationHour));
         }
+        System.out.print("enter month and year to calculate income (MM/yyyy): ");
+        SimpleDateFormat fmt2  = new SimpleDateFormat("MM/yyyy");
+        Date dateChosen = fmt2.parse(sc.next());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dateChosen);
+        double incomeValue = w.income(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH));
         sc.close();
+
+        System.out.printf("Name: %s", w.getName());
+        System.out.printf("Departament: %s", w.getDepartament().getName());
+        System.out.printf("income for %s: %.2f", fmt2.format(dateChosen), incomeValue);
     }
 }

@@ -49,7 +49,7 @@ public class Worker {
         this.departament = departament;
     }
 
-    public Departament getDepertament() {
+    public Departament getDepartament() {
         return departament;
     }
 
@@ -64,6 +64,7 @@ public class Worker {
     public void removeContract(HourContract contract) {
         contracts.remove(contract);
     }
+
     public Double income(int year, int month) {
         double sum = baseSalary;
         Calendar cal = Calendar.getInstance();
