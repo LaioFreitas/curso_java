@@ -33,6 +33,7 @@ public class App {
         System.out.print("how many contracts to this worker? ");
         int contractQuantity = sc.nextInt();
         SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+        
         for (int i = 0; i < contractQuantity; ++i) {
             System.out.printf("enter contract #%d data", i + 1);
             System.out.print("Date (dd/MM/yyyy): ");
@@ -46,6 +47,7 @@ public class App {
 
             w.addContract(new HourContract(date, valuePerHour, durationHour));
         }
+
         System.out.print("enter month and year to calculate income (MM/yyyy): ");
         SimpleDateFormat fmt2  = new SimpleDateFormat("MM/yyyy");
         Date dateChosen = fmt2.parse(sc.next());
