@@ -31,23 +31,27 @@ public class App {
 
         System.out.print("how many itens to this order? ");
         int quantityOrders = sc.nextInt();
-        Order order = new Order(new Date(System.currentTimeMillis()), status);
+        Order order = new Order(new Date(System.currentTimeMillis()), status, client);
         
         for (int i = 0; i < quantityOrders; ++i) {
             System.out.printf("enter #%d intem data:\n", i + 1);
             System.out.print("product name: ");
-            
+            String productName = sc.nextLine();
+
             System.out.print("product Price: ");
             Double productPrice = sc.nextDouble();
             
-            Product productName = new Product(sc.nextLine(), );
+            Product product = new Product(productName, productPrice);
             System.out.print("quantity: ");
             int productQuantity = sc.nextInt();
 
-            OrderItem item = new OrderItem(productQuantity, productPrice,  );
-
-
+            OrderItem item = new OrderItem(productQuantity, productPrice, product);
+            order.addItem(item);
         }
+        sc.close();
         
+        System.out.println("ORDER SUMARY!");
+        System.out.println(order.toString());
+
     }
 }

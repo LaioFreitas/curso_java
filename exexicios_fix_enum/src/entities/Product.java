@@ -20,7 +20,7 @@ public class Product {
        this.name = name; 
     }
 
-    public double getPrince() {
+    public double getPrice() {
         return price;
     }
 
