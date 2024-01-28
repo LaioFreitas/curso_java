@@ -29,5 +29,11 @@ public class BusinessAccount extends Account {
             System.out.println("o valor desejado é maior que o limite de enprestimo!");
         }
     }
+    
+    @Override 
+    public void withDraw(double amount) {
+        super.withDraw(amount);
+        balance -= 2.0;
+    }
 
 }
