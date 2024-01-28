@@ -7,6 +7,7 @@ import entities.Order;
 import entities.enums.OrderStatus;
 import entities.OrderItem;
 import entities.Product;
+
 public class App {
     public static void main(String[] args) throws Exception {
 
@@ -52,6 +53,5 @@ public class App {
         
         System.out.println("ORDER SUMARY!");
         System.out.println(order.toString());
-
     }
 }
