@@ -10,6 +10,7 @@ public class App {
 		Scanner sc = new Scanner(System.in);	
 		ChessMatch chessMatch = new ChessMatch();
 		while (true) {
+			UI.cleanScreen();
 			UI.printBoard(chessMatch.getPieces());
 			System.out.println();
 			System.out.print("Source: ");
@@ -19,6 +20,6 @@ public class App {
 
 			ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
 		}
-		sc.close();
+		// sc.close();
 	}
 }

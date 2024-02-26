@@ -24,7 +24,12 @@ public class Position {
         return collumn;
     }
 
-    public void setcollums(Integer collumn) {
+    public void setCollumn(Integer collumn) {
+        this.collumn = collumn;
+    }
+
+    public void setValues(int row, int collumn) {
+        this.row = row;
         this.collumn = collumn;
     }
 
