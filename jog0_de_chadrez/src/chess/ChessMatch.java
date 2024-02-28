@@ -25,13 +25,20 @@ public class ChessMatch {
         return mat;
     }
 
+    
     private void validateSourcePosition(Position position) {
         if (!board.thereIsAPiece(position)) {
-            throw new ChessException("there not a piece on  source position.");
+            throw new ChessException("there not a piece on source position.");
         }
         if (!board.piece(position).isThereAnyPossibleMove()) {
             throw new ChessException("There is no possible moves for the chosen piece");
         }
+    }
+    
+    public boolean[][] possibleMoves(ChessPosition soursePosition) {
+        Position position = soursePosition.toPosition();          
+        validateSourcePosition(position);
+        return board.piece(position).possibleMoves();
     }
 
     private Piece makeMove(Position source, Position target) {
