@@ -111,6 +111,11 @@ public class ChessMatch {
         validateSourcePosition(source);
         validateTargetPosition(source, target);
         Piece capturatedPiece = makeMove(source, target);
+        if (testCheck(currentPlayer)) {
+            undoMove(source, target, capturatedPiece);
+            throw new ChessException("you can't put yourself in check");
+        }
+        check = (testCheck(opponent(currentPlayer))) ? true : false;
         nextTurn();
         return (ChessPiece) capturatedPiece;
     }
@@ -125,6 +130,19 @@ public class ChessMatch {
 
         throw new IllegalStateException("there is no " + color + "king on the board");
     } 
+
+    private boolean testCheck(Color color) {
+        Position kingPosition = king(color).getChessPosition().toPosition();
+        List<Piece> opponentPieces = piecesOnBoard.stream().filter(x -> ((ChessPiece)x).getColor() == opponent(color)).collect(Collectors.toList());
+        for (Piece p : opponentPieces) {
+            boolean[][] mat = p.possibleMoves();
+            if (mat[kingPosition.getRow()][kingPosition.getCollumn()]) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     private void placeNewPiece(char collumn, int row, ChessPiece piece) {
         board.placePiece(piece, new ChessPosition(collumn, row).toPosition());
