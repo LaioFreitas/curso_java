@@ -20,10 +20,47 @@ public class Bishop extends ChessPiece {
         // left-above
         p.setValues(position.getRow() - 1, position.getCollumn() - 1);
         while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-            mat[p
+            mat[p.getRow()][p.getCollumn()] = true;
+            p.setValues(p.getRow() - 1, p.getCollumn() - 1);
         }
+        if (getBoard().positionExists(p)  && isThereOpponentPiece(p)) {
+            mat[p.getRow()][p.getCollumn()] = true;
+        }
+
+        // rigth-above
+        p.setValues(position.getRow() - 1, position.getCollumn() + 1);
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+            mat[p.getRow()][p.getCollumn()] = true;
+            p.setValues(p.getRow() - 1, p.getCollumn() + 1);
+        }
+        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+            mat[p.getRow()][p.getCollumn()] = true;
+        }
+
+        // left-below
+        p.setValues(position.getRow() + 1, position.getCollumn() - 1);
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+            mat[p.getRow()][p.getCollumn()] = true;
+            p.setValues(p.getRow() + 1, p.getCollumn() - 1);
+        }
+        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+            mat[p.getRow()][p.getCollumn()] = true;
+        }
+
+        // rigth-below
+        p.setValues(position.getRow() + 1, position.getCollumn() + 1);
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+            mat[p.getRow()][p.getCollumn()] = true;
+            p.setValues(p.getRow() + 1, p.getCollumn() + 1); 
+        }
+        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+            mat[p.getRow()][p.getCollumn()] = true;
+        }
+        
+        return mat;
     }
-f
+
+    @Override
     public String toString() {
         return "B";
     }
