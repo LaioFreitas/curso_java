@@ -29,7 +29,7 @@ public class App {
 				UI.cleanScreen();
 				UI.printBoard(chessMatch.getPieces(), possibleMoves);
 				
-				System.out.print("taget: ");
+				System.out.print("target: ");
 				ChessPosition target = UI.readChessPosition(sc);
 	
 				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
@@ -38,15 +38,11 @@ public class App {
 					captured.add(capturedPiece);
 				}
 			}
-			catch (ChessException e) {
+			catch (ChessException | InputMismatchException e) {
 				System.out.println(e.getMessage());
 				sc.nextLine();
 			}
-			catch (InputMismatchException e) {
-				System.out.println(e.getMessage());
-				sc.nextLine();
-			}
-		}
+        }
 		UI.cleanScreen();
 		UI.printMatch(chessMatch, captured);
 		// sc.close();
