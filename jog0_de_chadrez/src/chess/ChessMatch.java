@@ -216,6 +216,7 @@ public class ChessMatch {
         if (movedPiece instanceof Pawn) {
             if ((movedPiece.getColor() == Color.WHITE && target.getRow() == 0) || (movedPiece.getColor() == Color.BLACK && target.getRow() == 7)) {
                 promoted = (ChessPiece) board.piece(target);
+                promoted = replacePromotesPiece("Q");
             }
         }
         check = (testCheck(opponent(currentPlayer))) ? true : false;
@@ -238,7 +239,7 @@ public class ChessMatch {
         if (promoted == null) {
             throw new IllegalStateException("there is no a piece to be promoted");
         }
-        if (!type.equals("R") && !type.equals("K") && !type.equals("N") && !type.equals("Q")) {
+        if (!type.equals("B")!type.equals("R") && !type.equals("K") && !type.equals("N") && !type.equals("Q")) {
             throw new InvalidParameterException("Invalid type for promotion");
         }
 
